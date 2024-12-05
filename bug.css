@@ -1,0 +1,23 @@
+The following CSS code snippet demonstrates an uncommon issue related to specificity and inheritance:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  color: green; /* This style is overridden */
+}
+
+div p:hover {
+  color: purple; /* This works as expected */
+}
+```
+
+The unexpected behavior is that `div p` selector, which should inherit `color: blue` from the `div` and then be overridden by `color: green`, instead only applies `color: green`. This is due to the high specificity of the `div p` selector.
+
+The correct way to ensure inheritance and then override with a more specific selector is to use the `!important` flag.
