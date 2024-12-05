@@ -1,0 +1,27 @@
+To solve this problem and ensure that styles are applied correctly based on the cascading order and specificity, we need to understand how CSS specificity works.  The solution below demonstrates this:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  color: inherit; /* Explicitly inherit from parent */
+}
+
+div p.override {
+  color: green; /* Style is applied when class is present */
+}
+
+div p:hover {
+  color: purple; /* This works as expected */
+}
+```
+
+By explicitly using `color: inherit;` on the `div p` selector, we ensure that it inherits the `color: blue` from the `div`. Then, we add a class `override` to a paragraph element to achieve the desired styling.
+
+This approach makes the code more maintainable and avoids unexpected behavior related to the `!important` flag.
